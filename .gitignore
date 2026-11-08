@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files for more about ignoring files.
+
+/.bundle
+
+# Environment files and secrets
+/.env*
+/config/*.key
+
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+
+/public/assets
+/node_modules

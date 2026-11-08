@@ -1,0 +1,8 @@
+<li id="<%= dom_id(donation) %>">
+  <strong><%= donation.display_name %></strong>
+  gave <%= euros(donation.amount_cents) %><%= " every month" if donation.monthly? %>
+  <span class="muted"><%= time_ago_in_words(donation.paid_at) %> ago</span>
+  <% if donation.message.present? %>
+    <q><%= donation.message %></q>
+  <% end %>
+</li>

@@ -1,0 +1,45 @@
+<%# Two steps with JavaScript (amount, then details); one plain form without it. %>
+<%= form_with model: [campaign, donation], data: { controller: "donation-form", turbo: false }, class: "donation-form" do |f| %>
+  <% if donation.errors.any? %>
+    <div class="errors" role="alert">
+      <% donation.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <fieldset data-donation-form-target="step">
+    <legend>Your gift</legend>
+    <div class="presets">
+      <% Donation::PRESETS_CENTS.each do |cents| %>
+        <button type="button" class="preset" data-action="donation-form#choose"
+                data-donation-form-amount-param="<%= cents / 100 %>" data-donation-form-target="preset"><%= euros(cents) %></button>
+      <% end %>
+    </div>
+    <%= f.label :amount, "Amount (EUR)" %>
+    <%= f.text_field :amount, inputmode: "decimal", autocomplete: "off",
+          data: { donation_form_target: "amount", action: "input->donation-form#update" } %>
+    <div class="frequency">
+      <label><%= f.radio_button :frequency, "one_time", data: { action: "donation-form#update" } %> Once</label>
+      <label><%= f.radio_button :frequency, "monthly", data: { action: "donation-form#update" } %> Monthly</label>
+    </div>
+    <p class="error" data-donation-form-target="error" hidden></p>
+    <button type="button" class="button js-only" data-action="donation-form#next">Continue</button>
+  </fieldset>
+
+  <fieldset data-donation-form-target="step">
+    <legend>About you</legend>
+    <p class="summary" data-donation-form-target="summary"></p>
+    <%= f.label :donor_name, "Name" %>
+    <%= f.text_field :donor_name, required: true, maxlength: 100, autocomplete: "name" %>
+    <%= f.label :donor_email, "Email (for your receipt)" %>
+    <%= f.email_field :donor_email, required: true, autocomplete: "email" %>
+    <%= f.label :message, "Message (optional)" %>
+    <%= f.text_field :message, maxlength: 140 %>
+    <label class="check"><%= f.check_box :anonymous %> Show my gift as anonymous</label>
+    <div class="actions">
+      <button type="button" class="link js-only" data-action="donation-form#back">Back</button>
+      <%= f.submit "Donate", class: "button" %>
+    </div>
+  </fieldset>
+<% end %>

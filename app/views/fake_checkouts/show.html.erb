@@ -1,0 +1,11 @@
+<% content_for :title, "Test checkout" %>
+<section class="fake-checkout">
+  <p class="badge">Test mode: no money moves</p>
+  <h1>Pay <%= euros(@donation.amount_cents) %> <%= frequency_label(@donation) %></h1>
+  <p>to <strong><%= @donation.campaign.title %></strong> as <%= @donation.donor_email %></p>
+  <p class="muted">With STRIPE_SECRET_KEY set, this is Stripe's checkout page instead.</p>
+  <div class="actions">
+    <%= button_to "Pay", pay_fake_checkout_path(@donation), class: "button" %>
+    <%= button_to "Decline", decline_fake_checkout_path(@donation), class: "button secondary" %>
+  </div>
+</section>

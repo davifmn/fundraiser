@@ -1,0 +1,32 @@
+anna:
+  campaign: ocean
+  public_token: tok-anna
+  donor_name: Anna Weber
+  donor_email: anna@example.de
+  amount_cents: 5000
+  frequency: monthly
+  status: paid
+  paid_at: <%= 2.days.ago.to_fs(:db) %>
+  checkout_session_id: cs_fake_tok-anna
+
+lukas:
+  campaign: ocean
+  public_token: tok-lukas
+  donor_name: Lukas Meier
+  donor_email: lukas@example.ch
+  amount_cents: 2500
+  frequency: one_time
+  status: paid
+  anonymous: true
+  paid_at: <%= 1.day.ago.to_fs(:db) %>
+  checkout_session_id: cs_fake_tok-lukas
+
+pending:
+  campaign: ocean
+  public_token: tok-pending
+  donor_name: Ana Souza
+  donor_email: ana@example.com.br
+  amount_cents: 2000
+  frequency: one_time
+  status: pending
+  checkout_session_id: cs_fake_tok-pending

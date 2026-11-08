@@ -1,0 +1,4 @@
+<p>Dear <%= @donation.donor_name %>,</p>
+<p>thank you for your gift of <strong><%= euros(@donation.amount_cents) %></strong> <%= frequency_label(@donation) %> to
+  <%= link_to @campaign.title, campaign_url(@campaign) %>.</p>
+<p>Date: <%= l(@donation.paid_at.to_date) %><br>Reference: <%= @donation.public_token %></p>

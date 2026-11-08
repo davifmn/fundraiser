@@ -1,0 +1,8 @@
+<div id="campaign_progress" class="progress-block">
+  <p class="raised">
+    <strong><%= euros(campaign.raised_cents) %></strong>
+    raised of <%= euros(campaign.goal_cents) %> ·
+    <%= pluralize(campaign.donations_count, "donation") %>
+  </p>
+  <progress max="100" value="<%= campaign.progress_percent %>" aria-label="<%= campaign.progress_percent %>% of the goal"></progress>
+</div>

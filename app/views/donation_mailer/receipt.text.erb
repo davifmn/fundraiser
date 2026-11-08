@@ -1,0 +1,8 @@
+Dear <%= @donation.donor_name %>,
+
+thank you for your gift of <%= euros(@donation.amount_cents) %> <%= frequency_label(@donation) %> to <%= @campaign.title %>.
+
+Date: <%= l(@donation.paid_at.to_date) %>
+Reference: <%= @donation.public_token %>
+
+<%= campaign_url(@campaign) %>

@@ -1,0 +1,29 @@
+ocean:
+  title: Clean the Baltic Sea
+  slug: clean-the-baltic
+  description: Nets and plastic out of the water, one harbour at a time.
+  goal_cents: 2000000
+  raised_cents: 7500
+  donations_count: 2
+  currency: EUR
+  active: true
+
+library:
+  title: A library for Belo Horizonte
+  slug: bh-library
+  description: Books and a reading room for a public school.
+  goal_cents: 500000
+  raised_cents: 0
+  donations_count: 0
+  currency: EUR
+  active: true
+
+closed:
+  title: Last winter's coat drive
+  slug: coat-drive
+  description: Finished.
+  goal_cents: 100000
+  raised_cents: 100000
+  donations_count: 10
+  currency: EUR
+  active: false

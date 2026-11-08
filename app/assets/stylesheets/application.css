@@ -1,0 +1,64 @@
+:root {
+  --bg: #f8f7f4;
+  --surface: #ffffff;
+  --text: #1f2328;
+  --muted: #626a73;
+  --border: #e2e0da;
+  --accent: #1f7a5a;
+  --accent-text: #ffffff;
+  --danger: #b42318;
+  color-scheme: light dark;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #15181c; --surface: #1d2126; --text: #e8eaed; --muted: #a0a7b0; --border: #30363d; --accent: #4cc38a; --accent-text: #0b1f16; --danger: #ff8a80; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.5; }
+.topbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface); }
+.brand { font-weight: 700; color: var(--text); text-decoration: none; }
+a { color: var(--accent); }
+.container { max-width: 1040px; margin: 0 auto; padding: 16px; }
+.muted { color: var(--muted); }
+.flash { padding: 8px 12px; border-radius: 6px; background: var(--surface); border: 1px solid var(--border); }
+.flash-alert { border-color: var(--danger); color: var(--danger); }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.card h2 { margin-top: 0; font-size: 1.15rem; }
+.button, input[type=submit] { display: inline-block; background: var(--accent); color: var(--accent-text); border: none; border-radius: 8px; padding: 10px 18px; font: inherit; font-weight: 600; cursor: pointer; text-decoration: none; }
+.button.secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.link { background: none; border: none; color: var(--accent); cursor: pointer; font: inherit; }
+progress { width: 100%; height: 12px; accent-color: var(--accent); }
+.raised strong { font-size: 1.4rem; }
+.campaign { display: grid; grid-template-columns: 1fr 360px; gap: 24px; align-items: start; }
+@media (max-width: 800px) { .campaign { grid-template-columns: 1fr; } }
+.campaign-form { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; position: sticky; top: 16px; }
+.donation-form fieldset { border: none; padding: 0; margin: 0 0 16px; }
+.donation-form legend { font-weight: 700; margin-bottom: 8px; }
+.donation-form label { display: block; margin: 10px 0 4px; font-size: 0.9rem; color: var(--muted); }
+.donation-form input[type=text], .donation-form input[type=email] { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; font: inherit; background: var(--bg); color: var(--text); }
+.donation-form label.check { display: flex; gap: 6px; align-items: center; }
+.presets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.preset { padding: 10px 0; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; cursor: pointer; }
+.preset.selected { border-color: var(--accent); outline: 2px solid var(--accent); }
+.frequency { display: flex; gap: 16px; }
+.frequency label { display: flex; gap: 6px; align-items: center; color: var(--text); }
+.js-only { display: none; }
+.donation-form.js .js-only { display: inline-block; }
+.actions { display: flex; gap: 12px; align-items: center; margin-top: 12px; }
+.error, .errors { color: var(--danger); }
+.summary { font-weight: 600; }
+.donations { list-style: none; padding: 0; }
+.donations li { padding: 8px 0; border-bottom: 1px solid var(--border); }
+.donations q { display: block; color: var(--muted); }
+.status { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px; }
+.fake-checkout { max-width: 480px; margin: 40px auto; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 999px; background: #fff4ce; color: #6b4e00; font-size: 0.8rem; }
+table { width: 100%; border-collapse: collapse; background: var(--surface); margin-bottom: 24px; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--border); }
+th { color: var(--muted); font-size: 0.85rem; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+.pill { padding: 1px 8px; border-radius: 999px; font-size: 0.8rem; border: 1px solid var(--border); }
+.pill-paid { color: var(--accent); }
+.pill-failed { color: var(--danger); }
+@media (max-width: 700px) { table { display: block; overflow-x: auto; } }

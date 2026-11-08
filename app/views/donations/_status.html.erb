@@ -1,0 +1,14 @@
+<section id="donation_status" class="status status-<%= donation.status %>">
+  <% case donation.status %>
+  <% when "paid" %>
+    <h1>Thank you, <%= donation.donor_name %>!</h1>
+    <p>Your gift of <%= euros(donation.amount_cents) %> <%= frequency_label(donation) %> to
+      <strong><%= donation.campaign.title %></strong> went through. A receipt is on its way to <%= donation.donor_email %>.</p>
+  <% when "failed" %>
+    <h1>The payment did not go through</h1>
+    <p>You have not been charged. <%= link_to "Try again", donation.campaign %>.</p>
+  <% else %>
+    <h1>Confirming your payment…</h1>
+    <p class="muted">This page updates by itself as soon as the payment provider confirms it.</p>
+  <% end %>
+</section>

@@ -1,0 +1,15 @@
+<% content_for :title, "Campaigns" %>
+<h1>Campaigns</h1>
+<% if @campaigns.empty? %>
+  <p class="muted">No open campaigns right now.</p>
+<% end %>
+<div class="cards">
+  <% @campaigns.each do |campaign| %>
+    <article class="card">
+      <h2><%= link_to campaign.title, campaign %></h2>
+      <p class="muted"><%= truncate(campaign.description, length: 140) %></p>
+      <%= render "campaigns/progress", campaign: campaign %>
+      <%= link_to "Donate", campaign, class: "button" %>
+    </article>
+  <% end %>
+</div>

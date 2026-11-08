@@ -1,0 +1,58 @@
+<% content_for :title, "Dashboard" %>
+<h1>Dashboard</h1>
+
+<h2>Campaigns</h2>
+<table>
+  <thead><tr><th>Campaign</th><th class="num">Raised</th><th class="num">Goal</th><th class="num">Paid gifts</th><th class="num">Average</th><th class="num">Monthly donors</th><th class="num">Pending</th><th class="num">Failed</th></tr></thead>
+  <tbody>
+    <% @report.campaigns.each do |row| %>
+      <tr>
+        <td><%= link_to row.campaign.title, row.campaign %></td>
+        <td class="num"><%= euros(row.paid_cents) %></td>
+        <td class="num"><%= euros(row.campaign.goal_cents) %></td>
+        <td class="num"><%= row.paid_count %></td>
+        <td class="num"><%= euros(row.average_cents) %></td>
+        <td class="num"><%= row.monthly_donors %></td>
+        <td class="num"><%= row.pending_count %></td>
+        <td class="num"><%= row.failed_count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Top donors</h2>
+<table>
+  <thead><tr><th>Name</th><th>Email</th><th class="num">Total</th><th class="num">Gifts</th></tr></thead>
+  <tbody>
+    <% @report.top_donors.each do |donor| %>
+      <tr><td><%= donor.name %></td><td><%= donor.email %></td><td class="num"><%= euros(donor.total_cents) %></td><td class="num"><%= donor.gifts %></td></tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Last 30 days</h2>
+<table>
+  <thead><tr><th>Day</th><th class="num">Total</th><th class="num">Gifts</th></tr></thead>
+  <tbody>
+    <% @report.daily_totals.each do |day| %>
+      <tr><td><%= l(day.day) %></td><td class="num"><%= euros(day.total_cents) %></td><td class="num"><%= day.gifts %></td></tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Latest donations</h2>
+<table>
+  <thead><tr><th>When</th><th>Campaign</th><th>Donor</th><th class="num">Amount</th><th>Frequency</th><th>Status</th></tr></thead>
+  <tbody>
+    <% @report.latest.each do |donation| %>
+      <tr id="<%= dom_id(donation, :admin) %>">
+        <td><%= l(donation.created_at, format: :short) %></td>
+        <td><%= donation.campaign.title %></td>
+        <td><%= donation.donor_name %></td>
+        <td class="num"><%= euros(donation.amount_cents) %></td>
+        <td><%= donation.frequency.humanize %></td>
+        <td><span class="pill pill-<%= donation.status %>"><%= donation.status %></span></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

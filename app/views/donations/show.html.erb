@@ -1,0 +1,4 @@
+<% content_for :title, "Your donation" %>
+<%= turbo_stream_from @donation %>
+<%= render "donations/status", donation: @donation %>
+<p><%= link_to "Back to #{@donation.campaign.title}", @donation.campaign %></p>

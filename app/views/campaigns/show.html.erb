@@ -1,0 +1,23 @@
+<% content_for :title, @campaign.title %>
+<%= turbo_stream_from @campaign %>
+<div class="campaign">
+  <section class="campaign-main">
+    <h1><%= @campaign.title %></h1>
+    <%= simple_format @campaign.description %>
+    <%= render "campaigns/progress", campaign: @campaign %>
+    <h2>Recent supporters</h2>
+    <ul id="recent_donations" class="donations">
+      <%= render partial: "donations/donation", collection: @recent_donations %>
+    </ul>
+  </section>
+  <aside class="campaign-form">
+    <% if @campaign.open? %>
+      <%= render "donations/form", campaign: @campaign, donation: @donation %>
+    <% else %>
+      <% if @donation&.errors&.any? %>
+        <div class="errors" role="alert"><%= @donation.errors.full_messages.to_sentence %></div>
+      <% end %>
+      <p class="muted">This campaign is no longer accepting donations.</p>
+    <% end %>
+  </aside>
+</div>
