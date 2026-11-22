@@ -36,7 +36,7 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 # Payments: Stripe Checkout and signed webhooks
-gem "stripe", "~> 20.1"
+gem "stripe", "~> 21.1"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
